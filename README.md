@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/images/logo.png" alt="Meu Carro na FIPE" width="180"/>
+  <img src="assets/images/logo_texto_branco.png" alt="Meu Carro na FIPE" width="180"/>
 </p>
 
 <h1 align="center">Meu Carro na FIPE</h1>
