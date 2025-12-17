@@ -17,7 +17,7 @@
 
 ---
 
-## 📱 Sobre o Aplicativo
+## Sobre o Aplicativo
 
 O **Meu Carro na FIPE** é um aplicativo mobile que permite consultar de forma rápida e gratuita o valor de mercado de veículos através da Tabela FIPE (Fundação Instituto de Pesquisas Econômicas).
 
@@ -28,32 +28,32 @@ Basta informar a placa do veículo para obter instantaneamente:
 
 ---
 
-## ✨ Funcionalidades
+## Funcionalidades
 
-### 🔍 Consulta por Placa
+### Consulta por Placa
 - Suporte a placas no formato antigo (ABC-1234) e Mercosul (ABC1D23)
 - Validação automática do formato da placa
 - Consulta rápida com retorno em segundos
 
-### 🚗 Dados do Veículo
+### Dados do Veículo
 - **Identificação**: Placa, marca, modelo e versão
 - **Características**: Ano/modelo, cor, combustível
 - **Localização**: UF e município de registro
 - **Segurança**: Chassi parcialmente oculto
 
-### 💰 Valor FIPE
+### Valor FIPE
 - Valor de mercado atualizado mensalmente
 - Código FIPE oficial do modelo
 - Mês de referência da cotação
 - Múltiplos modelos quando disponíveis (permite seleção)
 
-### 📊 Cálculo de IPVA
+### Cálculo de IPVA
 - IPVA calculado automaticamente para o estado do veículo
 - **Comparativo nacional**: Valores de IPVA para todos os 27 estados
 - Alíquotas atualizadas por estado
 - Ordenação do maior para o menor valor
 
-### ⚡ Performance
+### Performance
 - Cache inteligente de 24 horas
 - Indicador visual quando dados são do cache
 - Loading states e feedback visual
@@ -61,7 +61,7 @@ Basta informar a placa do veículo para obter instantaneamente:
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 <p align="center">
   <img src="screenshots/splash.png" width="200" alt="Splash Screen"/>
@@ -72,7 +72,7 @@ Basta informar a placa do veículo para obter instantaneamente:
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 | Tecnologia | Descrição |
 |------------|-----------|
@@ -98,7 +98,7 @@ dependencies:
 
 ---
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 lib/
@@ -137,7 +137,7 @@ lib/
 
 ---
 
-## 🎨 Design System
+## Design System
 
 ### Cores
 
@@ -170,7 +170,7 @@ lib/
 
 ---
 
-## 🚀 Como Executar
+## Como Executar
 
 ### Pré-requisitos
 
@@ -209,7 +209,7 @@ flutter build ios --release
 
 ---
 
-## 🔌 API
+## API
 
 O aplicativo consome uma Edge Function hospedada no Supabase que:
 
@@ -263,7 +263,7 @@ Content-Type: application/json
 
 ---
 
-## 📋 Tabela de Alíquotas IPVA
+## Tabela de Alíquotas IPVA
 
 | Estado | Alíquota |
 |--------|----------|
@@ -277,7 +277,7 @@ Content-Type: application/json
 
 ---
 
-## 🤝 Contribuindo
+## Contribuindo
 
 Contribuições são bem-vindas! Sinta-se à vontade para:
 
@@ -289,13 +289,13 @@ Contribuições são bem-vindas! Sinta-se à vontade para:
 
 ---
 
-## 📄 Licença
+## Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
 
-## 👨‍💻 Autor
+## Autor
 
 Desenvolvido por **Cesar Bassani**
 
@@ -303,8 +303,9 @@ Desenvolvido por **Cesar Bassani**
 
 ## 📞 Suporte
 
-- 🌐 Website: [meucarronafipe.com.br](https://meucarronafipe.com.br)
-- 📧 Email: contato@meucarronafipe.com.br
+- Website: [meucarronafipe.com.br](https://meucarronafipe.com.br)
+- Email: contato@meucarronafipe.com.br
+- Linkedin: https://www.linkedin.com/in/cesarbassani
 
 ---
 
