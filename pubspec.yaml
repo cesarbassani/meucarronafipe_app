@@ -1,0 +1,60 @@
+name: meucarronafipe
+description: Consulte o valor FIPE do seu veículo pela placa
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # HTTP e API
+  http: ^1.1.0
+  
+  # Gerenciamento de estado
+  provider: ^6.1.1
+  
+  # UI
+  google_fonts: ^6.1.0
+  flutter_svg: ^2.0.9
+  fl_chart: ^0.65.0
+  shimmer: ^3.0.0
+  
+  # Utilitários
+  intl: ^0.18.1
+  mask_text_input_formatter: ^2.5.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/app_icon.png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/icon/app_icon.png"
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    - assets/icon/
+  
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700
