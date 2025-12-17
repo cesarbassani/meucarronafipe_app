@@ -1,0 +1,114 @@
+import 'package:flutter/foundation.dart';
+import '../../data/models/fipe_model.dart';
+import '../../data/services/api_service.dart';
+
+enum ConsultaStatus {
+  initial,
+  loading,
+  success,
+  error,
+}
+
+class ConsultaProvider extends ChangeNotifier {
+  final ApiService _apiService = ApiService();
+
+  // Estado
+  ConsultaStatus _status = ConsultaStatus.initial;
+  ConsultaResponse? _response;
+  String? _errorMessage;
+  FipeModel? _selectedModel;
+  String _placa = '';
+
+  // Getters
+  ConsultaStatus get status => _status;
+  ConsultaResponse? get response => _response;
+  String? get errorMessage => _errorMessage;
+  FipeModel? get selectedModel => _selectedModel;
+  String get placa => _placa;
+
+  bool get isLoading => _status == ConsultaStatus.loading;
+  bool get hasData => _status == ConsultaStatus.success && _response != null;
+  bool get hasError => _status == ConsultaStatus.error;
+  bool get isInitial => _status == ConsultaStatus.initial;
+
+  // Dados derivados
+  VehicleModel? get vehicle => _response?.vehicle;
+  List<FipeModel> get fipeModels => _response?.fipeModels ?? [];
+  IpvaPrincipal? get ipvaPrincipal => _response?.ipvaPrincipal;
+  bool get fromCache => _response?.fromCache ?? false;
+  List<FipeHistoryEntry>? get fipeHistory => _response?.fipeHistory;
+
+  /// Valor FIPE do modelo selecionado ou do primeiro modelo
+  double get valorFipe {
+    if (_selectedModel != null) return _selectedModel!.valor;
+    if (_response?.mainModel != null) return _response!.mainModel!.valor;
+    return 0;
+  }
+
+  /// IPVA calculado baseado no modelo selecionado
+  double get ipvaValor {
+    if (ipvaPrincipal == null) return 0;
+    return valorFipe * (ipvaPrincipal!.aliquota / 100);
+  }
+
+  /// Consulta a placa na API
+  Future<void> consultarPlaca(String placa) async {
+    _placa = placa.toUpperCase().replaceAll(RegExp(r'[^A-Z0-9]'), '');
+    _status = ConsultaStatus.loading;
+    _errorMessage = null;
+    _selectedModel = null;
+    notifyListeners();
+
+    final result = await _apiService.consultarPlaca(_placa);
+
+    result.when(
+      success: (data) {
+        _response = data;
+        _status = ConsultaStatus.success;
+        
+        // Auto-seleciona o primeiro modelo se existir
+        if (data.fipeModels.isNotEmpty) {
+          _selectedModel = data.fipeModels.first;
+        }
+      },
+      error: (message) {
+        _errorMessage = message;
+        _status = ConsultaStatus.error;
+        _response = null;
+      },
+    );
+
+    notifyListeners();
+  }
+
+  /// Seleciona um modelo FIPE da lista
+  void selectModel(FipeModel model) {
+    _selectedModel = model;
+    notifyListeners();
+  }
+
+  /// Limpa os dados e volta ao estado inicial
+  void reset() {
+    _status = ConsultaStatus.initial;
+    _response = null;
+    _errorMessage = null;
+    _selectedModel = null;
+    _placa = '';
+    notifyListeners();
+  }
+
+  /// Limpa apenas o erro
+  void clearError() {
+    _errorMessage = null;
+    if (_status == ConsultaStatus.error) {
+      _status = ConsultaStatus.initial;
+    }
+    notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    _apiService.dispose();
+    super.dispose();
+  }
+}
